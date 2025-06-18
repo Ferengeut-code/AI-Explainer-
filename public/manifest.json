@@ -1,0 +1,79 @@
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
+module.exports = {
+    entry: './23-Tanstack/src/main.tsx',  // Точка входу для Webpack
+    output: {
+        path: path.resolve(__dirname, '23-Tanstack', 'dist'),  // Папка для збірки
+        filename: 'bundle.js',  // Ім'я скомпільованого файлу
+    },
+    module: {
+        rules: [
+            {
+                test: /\.module\.css$/,  // Для файлів з .module.css
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: {
+                                localIdentName: '[name]__[local]___[hash:base64:5]',  // Модулі CSS
+                            },
+                        },
+                    },
+                    'postcss-loader',
+                ],
+                exclude: [/node_modules/, /03-CoreConcepts/, /04-DeepDive/, /05-myOwnProject/, /06-Css-React/, /07-refs/, /08-ProjectManagement/, /09-StateManagement/, /10-useState/, /11-QuizApp/, /12-Optimization/, /13-HTTP/, /14-Forms/, /15-FormsActions/, /16-FoodApp/, /17-Redux/, /18-AdvancedRedux/, /19-Spa/, /20-Spa-2.0/, /21-Authentication/],  // Corrected exclude array
+            },
+            {
+                test: /\.css$/,  // Для звичайних CSS-файлів
+                use: ['style-loader', 'css-loader', 'postcss-loader'],  // Проста обробка CSS (без модулів)
+                exclude: [/\.module\.css$/, /node_modules/],  // Виключаємо CSS-модулі
+            },
+            {
+                test: /\.(js|jsx|ts|tsx)$/,  // Обробляємо файли .js, .jsx, .ts і .tsx
+                exclude: [/node_modules/, /03-CoreConcepts/, /04-DeepDive/, /05-myOwnProject/, /06-Css-React/, /07-refs/, /08-ProjectManagement/, /09-StateManagement/, /10-useState/, /11-QuizApp/, /12-Optimization/, /13-HTTP/, /14-Forms/, /15-FormsActions/, /16-FoodApp/, /17-Redux/, /18-AdvancedRedux/, /19-Spa/, /20-Spa-2.0/, /21-Authentication/],  // Виключаємо папку node_modules
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript']
+                    },
+
+                },
+
+            },
+            {
+                test: /\.(png|jpe?g|gif|svg)$/,  // Обработка изображений
+                use: [
+                    {
+                        loader: 'file-loader',  // Лоадер для изображений
+                        options: {
+                            name: '[name].[hash].[ext]',  // Формат имени файла
+                            outputPath: 'images',  // Куда сохранять изображения в сборке
+                        },
+                    },
+                ],
+            },
+        ],
+    },
+    resolve: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],  // Розширення файлів, які буде шукати Webpack
+    },
+    plugins: [
+        new CleanWebpackPlugin(),  // Очищаємо папку dist перед збіркою
+        new HtmlWebpackPlugin({
+            template: './23-Tanstack/index.html',  // Використовуємо шаблон HTML
+        }),
+    ],
+    devServer: {
+        static: {
+            directory: path.resolve(__dirname, './'),  // Шлях до статичних файлів
+        },
+        historyApiFallback: true,
+        compress: true,  // Увімкнення стиснення
+        port: 3000,  // Порт для сервера
+        hot: true,  // Увімкнення "гарячого перезавантаження"
+    },
+    mode: 'development',  // Режим розробки
+};

@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES2022" /* современный синтаксис под актуальные браузеры */,
+    "module": "ESNext" /* чтобы потом можно было использовать import/export без лишнего бандлинга */,
+    "moduleResolution": "Node",
+    "strict": true /* включает весь набор строгих проверок — помогает ловить ошибки на этапе сборки */,
+    "jsx": "react-jsx" /* если используешь React 17+; убери эту строку, если React не нужен */,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true /* ускоряет компиляцию, пропуская проверку d.ts‑файлов библиотек */,
+    "forceConsistentCasingInFileNames": true,
+    "rootDir": "src" /* исходники храним внутри /src */,
+    "outDir": "dist" /* готовый JS будет складываться в /dist */,
+    "resolveJsonModule": true,
+    "sourceMap": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}

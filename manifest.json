@@ -4,5 +4,12 @@
   "version": "1.2",
   "description": "Select a word to see its meaning from AI",
   "options_page": "./AI-Explainer/dist/options.html",
-  "permissions": ["activeTab", "scripting", "storage"]
+  "permissions": ["activeTab", "scripting", "storage", "contextMenus"],
+
+  "background": {
+    "service_worker": "./AI-Explainer/dist/background.js"
+  },
+  "action": {
+    "default_popup": "./AI-Explainer/dist/popup.html"
+  }
 }

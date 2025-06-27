@@ -14,6 +14,7 @@
             id="defaultPrompt"
             class="container-settings_textarea"
             name="defaultPrompt"
+            defaultValue="Explain the word"
             class="container-settings_textarea"
             rows="4"
             cols="30"
@@ -46,12 +47,20 @@
             <option value="deep">Deep</option>
           </select>
         </label>
-
+        <label class="container-settings_label">
+          OpenAI API Key:
+          <input
+            type="password"
+            id="apiKey"
+            name="apiKey"
+            class="container-settings_input"
+          />
+        </label>
         <button type="submit" id="save" class="container-settings_button">
           Save
         </button>
       </section>
     </main>
-    <script type="module" src="./bundle.js"></script>
+    <script type="module" src="./options.js"></script>
   </body>
 </html>

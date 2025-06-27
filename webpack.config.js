@@ -1,16 +1,16 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-
 module.exports = {
     entry: {
-
+        background: './src/background.ts',
         options: './src/options.ts',
+        popup: './src/popup.ts',
 
     },  // Entry point for Webpack
     output: {
         path: path.resolve(__dirname, 'AI-Explainer', 'dist'),  // Output folder
-        filename: 'bundle.js',  // Name of the compiled file
+        filename: '[name].js',  // Name of the compiled file
         clean: true,  // Clean the output directory before each build
     },
     devtool: 'cheap-module-source-map', // Source map for easier debugging
@@ -56,6 +56,11 @@ module.exports = {
             filename: 'options.html',
             template: './src/options.html',
             chunks: ['options'],
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'popup.html',
+            template: './src/popup.html',
+            chunks: ['popup'],
         }),
     ],
     devServer: {

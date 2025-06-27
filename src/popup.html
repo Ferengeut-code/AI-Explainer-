@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI-Explainer</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="popup_container popup">
+        <h3 class="popup_title">AI Explainer</h3>
+        <label class="popup_label">
+          Selected Word:
+          <textarea
+            class="popup_textarea"
+            readonly
+            name="selectedText"
+            id="popup-selectedText"
+          ></textarea>
+        </label>
+        <label class="popup_label">
+          Prompt:
+          <textarea class="popup_textarea" name="Prompt" id="Prompt"></textarea>
+        </label>
+        <button id="explanation-button" class="popup_button">Explain</button>
+        <label class="popup_label">
+          Result:
+          <textarea
+            class="popup_textarea"
+            readonly
+            name="Result"
+            id="popup-result"
+          ></textarea>
+        </label>
+      </div>
+    </div>
+  </body>
+  <script type="module" src="./popup.js"></script>
+</html>

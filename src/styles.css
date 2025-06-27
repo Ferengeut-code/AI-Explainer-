@@ -58,7 +58,8 @@ body {
 
 /* selects */
 .container-settings_select,
-.container-settings_textarea {
+.container-settings_textarea,
+.container-settings_input {
   padding: 0.5rem;
   border-radius: 0.375rem;
   border: 1px solid #ccc;
